@@ -1,4 +1,4 @@
-import { ActionFunction, json, redirect } from "@remix-run/node";
+import { ActionFunction, json } from "@remix-run/node";
 import { Form, useActionData, useSearchParams, useSubmit } from "@remix-run/react";
 import { z } from "zod";
 import Input from "~/components/input";
@@ -11,7 +11,6 @@ type ActionData = { errors: z.ZodIssue[] }
 const schema = z.object({
     email: z.string().min(1, "Por favor preencha o e-mail").email({ message: "E-mail invalido" }),
     password: z.string().min(6, "Senha deve possuir 6 caracteres").max(8, "Senha deve possuir 8 caracte"),
-    redirectTo: z.string()
 })
 
 export const action: ActionFunction = async ({ request }) => {

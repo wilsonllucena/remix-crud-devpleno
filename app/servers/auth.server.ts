@@ -1,5 +1,4 @@
 import { json,  redirect } from "@remix-run/node";
-import { signToken } from "~/utils/jwt.server";
 import { authCookie, deleteCookie } from "./cookie.server";
 import { prisma } from "./prisma.server";
 import type { LoginForm, RegisterForm } from "./types.server";
@@ -8,7 +7,7 @@ import { createUser } from "./users.server";
 export const login = async (form: LoginForm): Promise<any> => {
   const user = await prisma.user.findUnique({ where: { email: form.email } });
 
-
+console.log(user);
   if (!user) {
     return json({ error: "Incorret login" }, { status: 400 });
   }
@@ -49,9 +48,8 @@ export const  createUserSession = async (userId: string, redirectTo: string) => 
       name: "Autenticated"
     };
 
-  const token = signToken(payload)
   return redirect(redirectTo, {
-    headers: { "Set-Cookie": await authCookie.serialize({ "userId": userId , token}) },
+    headers: { "Set-Cookie": await authCookie.serialize({ "userId": userId }) },
   });
 }
 
