@@ -13,8 +13,6 @@ const user = {
 }
 const navigation = [
     { name: 'Dashboard', href: '#', current: true },
-    { name: 'Team', href: '#', current: false },
-    { name: 'Projects', href: '#', current: false },
 ]
 const userNavigation = [
     { name: 'Sair', href: '#' },
@@ -28,7 +26,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     return null;
 }
 
-export async function deslog(){
+export async function deslog() {
     return await logout()
 }
 export default function AdminLayout() {
@@ -191,7 +189,9 @@ export default function AdminLayout() {
                         </div>
                     </header>
                     <main>
-                        <Outlet />
+                        <div className="mx-auto max-w-7xl sm:px-6 lg:px-8 mt-2">
+                            <Outlet />
+                        </div>
                     </main>
                 </div>
             </div>
