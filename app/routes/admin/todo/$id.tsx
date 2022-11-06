@@ -15,7 +15,7 @@ export const loader: LoaderFunction = async ({ params }) => {
     const { id } = params;
 
     try {
-        const response = await fetch(`${ process.env.API_URL }/todo/${id}`);
+        const response = await fetch(`${ process.env.URI_API }/todo/${id}`);
         return response.json();
     } catch (error) {
         console.log(error)
@@ -33,7 +33,7 @@ export const action: ActionFunction = async ({ request, params }) => {
     }
 
     try {
-        await fetch(`${process.env.API_URL }/todo/${id}`, {
+        await fetch(`${process.env.URI_API }/todo/${id}`, {
             method: 'PUT',
             body: JSON.stringify({
                 title: formValues.title,

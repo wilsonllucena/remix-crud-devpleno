@@ -19,7 +19,7 @@ export const action: ActionFunction = async ({ request }) => {
         return json<ActionData>({ errors: result.error.issues })
     }
     
-    await fetch(`${process.env.API_URL}/todo`, {
+    await fetch(`${process.env.URI_API}/todo`, {
         method: 'POST',
         body: JSON.stringify({
             title: formValues.title,

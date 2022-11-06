@@ -8,7 +8,7 @@ export interface Todo {
 }
 
 export const loader: LoaderFunction = async () => {
-    const response = await fetch(`${process.env.API_URL }/todo`)
+    const response = await fetch(`${process.env.URI_API }/todo`)
     return response.json()
 }
 
@@ -19,7 +19,7 @@ export const action: ActionFunction = async ({ request }) => {
 
     try {
         if (action === 'delete') {
-            await fetch(`${process.env.API_URL }/todo/${id}`, {
+            await fetch(`${process.env.URI_API }/todo/${id}`, {
                 method: "DELETE"
             })
         }
