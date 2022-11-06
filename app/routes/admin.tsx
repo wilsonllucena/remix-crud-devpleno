@@ -12,7 +12,7 @@ const user = {
         'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
 }
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
+    { name: 'Dashboard', href: '', current: true },
 ]
 const userNavigation = [
     { name: 'Sair', href: '#' },
@@ -30,6 +30,7 @@ export async function deslog() {
     return await logout()
 }
 export default function AdminLayout() {
+    
     return (
         <>
             <div className="min-h-full">
@@ -53,9 +54,9 @@ export default function AdminLayout() {
                                         </div>
                                         <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                                             {navigation.map((item) => (
-                                                <a
+                                                <Link
                                                     key={item.name}
-                                                    href={item.href}
+                                                    to={item.href}
                                                     className={classNames(
                                                         item.current
                                                             ? 'border-indigo-500 text-gray-900'
@@ -65,7 +66,7 @@ export default function AdminLayout() {
                                                     aria-current={item.current ? 'page' : undefined}
                                                 >
                                                     {item.name}
-                                                </a>
+                                                </Link>
                                             ))}
                                         </div>
                                     </div>
