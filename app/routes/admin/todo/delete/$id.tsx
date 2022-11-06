@@ -4,7 +4,7 @@ export const loader: LoaderFunction = async ({ params }) => {
     const { id } = params;
 
     try {
-        return await fetch(`${process.env.API_URL }/todo/${id}`,{
+        return await fetch(`${process.env.API_URL}/todo/${id}`, {
             method: 'DELETE'
         });
 
