@@ -48,9 +48,7 @@ export default function Index() {
                         type="button"
                         className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
                     >
-                        <div className="flex justify-between items-center">
                             <Link to="todo/new"> Novo</Link>
-                        </div>
                     </button>
                 </div>
             </div>
@@ -77,17 +75,15 @@ export default function Index() {
                             <tr key={todo.id}>
                                 <td className="px-3 py-4 text-sm text-gray-500 ">{todo.title}</td>
                                 <td className="py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 justify-between">
-
-                                    <button
-                                        type="button"
+                                    <Link to={`todo/${todo.id}`} 
                                         className="inline-flex items-center rounded border border-transparent bg-indigo-600 px-2.5 py-1.5 text-xs font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
 
                                     >
-                                        <Link to={`todo/${todo.id}`} >
                                             <FiEdit size={15} /><span className="sr-only">, {todo.id}</span>
-                                        </Link>
-                                    </button>
-                                    <Form method="post">
+                                    </Link>
+
+                                    <Form className="inline-flex items-center ml-1"
+ method="post">
                                         <input type="hidden" name="action" value="delete" />
                                         <input type="hidden" name="id" value={todo.id} />
                                         <button
